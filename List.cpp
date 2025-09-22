@@ -12,7 +12,9 @@ public:
     {
         size = 0;
     }
-    int get(int pos) //
+
+    // truy cập
+    int get(int pos) 
     {
         if (pos < 0 || pos >= size)
         {
@@ -21,6 +23,8 @@ public:
         }
         return data[pos];
     }
+
+    // chèn phần tử đầu
     void push_front(int value)
     {
         if (size == MAX)
@@ -32,6 +36,8 @@ public:
         data[0] = value;
         size++;
     }
+
+    // chèn phần tử cuối
     void push_back(int value)
     {
         if (size == MAX)
@@ -39,6 +45,8 @@ public:
         data[size] = value;
         size++;
     }
+
+    //chèn vị trí bất kì
     void InsertPos(int value, int pos)
     {
         if (size == MAX)
@@ -50,6 +58,8 @@ public:
         data[pos - 1] = value;
         size++;
     }
+
+    // xóa phần tử đầu
     void del_front()
     {
         for (int i = 0; i < size - 1; i++)
@@ -58,10 +68,14 @@ public:
         }
         size--;
     }
+
+    // xóa phần tử cuối
     void del_back()
     {
         size--;
     }
+
+    // duyệt xuôi
     void traverse_forward()
     {
         for (int i = 0; i < size; i++)
@@ -69,6 +83,8 @@ public:
             cout << data[i] << " ";
         }
     }
+
+    //duyệt ngược
     void traverse_backward()
     {
         for (int i = size - 1; i >= 0; i--)
@@ -94,3 +110,4 @@ int main()
     myList.traverse_forward();
     return 0;
 }
+
