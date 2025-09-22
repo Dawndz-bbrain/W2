@@ -75,6 +75,16 @@ public:
         size--;
     }
 
+    // xóa phần tử bất kì
+    void delPos(int pos)
+    {
+        for(int i = pos - 1; i < size - 1; i++)
+        {
+            data[i] = data[i+1];
+        }
+        size--;
+    }
+
     // duyệt xuôi
     void traverse_forward()
     {
@@ -110,4 +120,5 @@ int main()
     myList.traverse_forward();
     return 0;
 }
+
 
