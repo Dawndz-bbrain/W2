@@ -66,7 +66,7 @@ public:
     {
         Node *newNode = new Node(value);
         Node *temp = head;
-        for (int i = 1; i < pos; i++)
+        for (int i = 1; i < pos - 1; i++)
         {
             temp = temp->next;
         }
@@ -130,4 +130,5 @@ int main()
     myList.traverse_forward();
     return 0;
 }
+
 
