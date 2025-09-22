@@ -21,7 +21,9 @@ public:
     {
         head = nullptr;
     }
-    int get(int pos) // truy cập
+
+    // truy cập
+    int get(int pos) 
     {
         Node *temp = head;
         int index = 1;
@@ -33,13 +35,17 @@ public:
             index++;
         }
     }
-    void push_front(int value) // thêm phần tử đầu
+
+    // thêm phần tử đầu
+    void push_front(int value) 
     {
         Node *newNode = new Node(value);
         newNode->next = head;
         head = newNode;
     }
-    void push_back(int value) // thêm phần tử cuối
+
+    // thêm phần tử cuối
+    void push_back(int value) 
     {
         Node *newNode = new Node(value);
         if (head == nullptr)
@@ -54,7 +60,9 @@ public:
         }
         temp->next = newNode;
     }
-    void Insert(int value, int pos) // thêm vào vị trí bất kì
+
+    // thêm vào vị trí bất kì
+    void Insert(int value, int pos) 
     {
         Node *newNode = new Node(value);
         Node *temp = head;
@@ -65,7 +73,9 @@ public:
         newNode->next = temp->next;
         temp->next = newNode;
     }
-    void del_front() // xóa phần tử đầu
+
+    // xóa phần tử đầu
+    void del_front() 
     {
         if (head == nullptr)
             return;
@@ -73,7 +83,9 @@ public:
         head = head->next;
         delete temp;
     }
-    void del_back() // xóa phần tử cuối
+
+    // xóa phần tử cuối
+    void del_back() 
     {
         if (head == nullptr)
             return;
@@ -89,7 +101,9 @@ public:
         delete temp->next;
         temp->next = nullptr;
     }
-    void traverse_forward() // duyệt xuôi
+
+    // duyệt xuôi
+    void traverse_forward() 
     {
         Node *temp = head;
         while (temp != nullptr)
@@ -116,3 +130,4 @@ int main()
     myList.traverse_forward();
     return 0;
 }
+
