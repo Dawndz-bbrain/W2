@@ -11,19 +11,24 @@ public:
         next = nullptr;
     }
 };
-class List // tạo lớp list
+class LinkedList // tạo lớp list
 {
 private:
     Node *head; // tạo con trỏ head
+    void traverse_backward_clone(Node *head)
+    {
+        if (head == nullptr)
+            return;
+        traverse_backward_clone(head->next);
+        cout << head->data << " ";
+    }
 
 public:
     List() // khởi tạo list
     {
         head = nullptr;
     }
-
-    // truy cập
-    int get(int pos) 
+    int get(int pos) // truy cập
     {
         Node *temp = head;
         int index = 1;
@@ -35,17 +40,13 @@ public:
             index++;
         }
     }
-
-    // thêm phần tử đầu
-    void push_front(int value) 
+    void push_front(int value) // thêm phần tử đầu
     {
         Node *newNode = new Node(value);
         newNode->next = head;
         head = newNode;
     }
-
-    // thêm phần tử cuối
-    void push_back(int value) 
+    void push_back(int value) // thêm phần tử cuối
     {
         Node *newNode = new Node(value);
         if (head == nullptr)
@@ -60,22 +61,18 @@ public:
         }
         temp->next = newNode;
     }
-
-    // thêm vào vị trí bất kì
-    void Insert(int value, int pos) 
+    void Insert(int value, int pos) // thêm vào vị trí bất kì
     {
         Node *newNode = new Node(value);
         Node *temp = head;
-        for (int i = 1; i < pos - 1; i++)
+        for (int i = 1; i < pos; i++)
         {
             temp = temp->next;
         }
         newNode->next = temp->next;
         temp->next = newNode;
     }
-
-    // xóa phần tử đầu
-    void del_front() 
+    void del_front() // xóa phần tử đầu
     {
         if (head == nullptr)
             return;
@@ -83,9 +80,7 @@ public:
         head = head->next;
         delete temp;
     }
-
-    // xóa phần tử cuối
-    void del_back() 
+    void del_back() // xóa phần tử cuối
     {
         if (head == nullptr)
             return;
@@ -102,8 +97,18 @@ public:
         temp->next = nullptr;
     }
 
-    // duyệt xuôi
-    void traverse_forward() 
+    // xóa phần tử bất kì
+    void DelPos(int pos)
+    {
+        Node *temp = head;
+        for (int i = 1; i < pos - 1; i++)
+        {
+            temp = temp->next;
+        }
+        temp->next = temp->next->next;
+    }
+
+    void traverse_forward() // duyệt xuôi
     {
         Node *temp = head;
         while (temp != nullptr)
@@ -113,10 +118,15 @@ public:
         }
         cout << endl;
     }
+    void traverse_backward() // duyệt ngược
+    {
+        traverse_backward_clone(head);
+        cout << endl;
+    }
 };
 int main()
 {
-    List myList;
+    LinkedList myList;
     myList.push_front(10);
     myList.push_back(20);
     myList.push_back(30);
@@ -128,7 +138,6 @@ int main()
     myList.del_back();
     cout << "phan tu sau khi xoa phan tu cuoi la: ";
     myList.traverse_forward();
+    myList.traverse_backward();
     return 0;
 }
-
-
